@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 /**
  * WebSecurityConfig.class is required to include to the WebMvcTest
- * or WebSecurityConfig.class is required to implement the WebMvcConfigurer
+ * or implement the WebMvcConfigurer interface
  */
 @Slf4j
 @WebMvcTest(controllers = {
@@ -115,7 +115,10 @@ public class WebSecurityIntegrationTests {
     }
 
     // /user/info
-    @WithMockUser(value = "user1", roles = {"USER_01"})
+    @WithMockUser(value = "user1"
+//            , roles = {"USER_01"}
+            , authorities = {"USER_01"}
+    )
     @Test
     public void test_getUserInfo_user1_USER_01() throws Exception {
         // given
@@ -136,7 +139,7 @@ public class WebSecurityIntegrationTests {
     }
 
     // /user/info
-    @WithMockUser(value = "admin1", roles = {"ADMIN_01"})
+    @WithMockUser(value = "admin1", authorities = {"ADMIN_01"})
     @Test
     public void test_getUserInfo_admin1_ADMIN_01() throws Exception {
         // given
@@ -157,7 +160,7 @@ public class WebSecurityIntegrationTests {
     }
 
     // /user/info
-    @WithMockUser(value = "user1", roles = {"USER_01"})
+    @WithMockUser(value = "user1", authorities = {"USER_01"})
     @Test
     public void test_postUserInfo_user1_USER_01() throws Exception {
         // given
@@ -181,7 +184,7 @@ public class WebSecurityIntegrationTests {
     }
 
     // /admin/info
-    @WithMockUser(value = "admin1", roles = {"ADMIN_01"})
+    @WithMockUser(value = "admin1", authorities = {"ADMIN_01"})
     @Test
     public void test_postUserInfo_admin1_ADMIN_01() throws Exception {
         // given
@@ -205,7 +208,10 @@ public class WebSecurityIntegrationTests {
     }
 
     // /admin/info
-    @WithMockUser(value = "admin2", roles = {"ADMIN_02"})
+    @WithMockUser(value = "admin2"
+//            , roles = {"ADMIN_02"}
+            , authorities = {"ADMIN_02"}
+    )
     @Test
     public void test_getAdminInfo_admin2_ADMIN_02() throws Exception {
         // given
@@ -226,7 +232,7 @@ public class WebSecurityIntegrationTests {
     }
 
     // /admin/info
-    @WithMockUser(value = "user2", roles = {"USER_02"})
+    @WithMockUser(value = "user2", authorities = {"USER_02"})
     @Test
     public void test_getAdminInfo_user2_USER_02() throws Exception {
         // given
@@ -247,7 +253,7 @@ public class WebSecurityIntegrationTests {
     }
 
     // /admin/info
-    @WithMockUser(value = "admin2", roles = {"ADMIN_02"})
+    @WithMockUser(value = "admin2", authorities = {"ADMIN_02"})
     @Test
     public void test_postAdminInfo_admin2_ADMIN_02() throws Exception {
         // given
@@ -271,7 +277,7 @@ public class WebSecurityIntegrationTests {
     }
 
     // /admin/info
-    @WithMockUser(value = "admin3", roles = {"ADMIN_03"})
+    @WithMockUser(value = "admin3", authorities = {"ADMIN_03"})
     @Test
     public void test_postAdminInfo_admin3_ADMIN_03() throws Exception {
         // given

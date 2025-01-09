@@ -33,11 +33,12 @@ public class WebSecurityConfig {
                 .permitAll()
                 //
                 .requestMatchers(AntPathRequestMatcher.antMatcher("/user/**"))
-//                .hasAnyAuthority("USER_01", "USER_02")
-                .hasAnyRole("USER_01", "USER_02")
+//                .hasAnyRole("USER_01", "USER_02")
+                .hasAnyAuthority("USER_01", "USER_02")
                 //
                 .requestMatchers(AntPathRequestMatcher.antMatcher("/admin/**"))
-                .hasAnyRole("ADMIN_01", "ADMIN_02")
+//                .hasAnyRole("ADMIN_01", "ADMIN_02")
+                .hasAnyAuthority("ADMIN_01", "ADMIN_02")
                 //
 //                .anyRequest()
 //                .authenticated()

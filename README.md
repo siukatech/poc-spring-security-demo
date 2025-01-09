@@ -1,13 +1,18 @@
 # Spring Security Demo
 
 ## WebSecurityConfig
-The `WebSecurityConfig` could also implement `WebMvcConfigurer`.  
-Then we will combine the security config and web mvc config.  
+The `WebSecurityConfig` is a configuration class that attaches the following annotations to enable the spring security.  
+- @EnableWebSecurity
+- @EnableMethodSecurity
+- @Configuration (optional)
 
-In this demo, we dont do that.  
+However, it is not initiated when `WebMvcTest` is used.  
+The configuration of `HttpSecurity` then cannot be tested.  
 
-The `WebMvcConfigurer` will be included when the `WebMvcTest` is used.  
-So if we want the `WebSecurityConfig` being included, we could either implement the `WebMvcConfigurer` or add it to `WebMvcTest`'s classes list as below.  
+There are 2 ways to initiate the `WebSecurityConfig`.
+- Implement the interface `WebMvcConfigurer` as `WebMvcTest` uses this.
+- Add to `WebMvcTest.controllers`.
+
 ```java
 @Slf4j
 @WebMvcTest(controllers = {
@@ -20,8 +25,9 @@ public class WebSecurityIntegrationTests {
 }
 ```
 
-Once `WebSecurityConfig` is loaded, the `HttpSecurity.authorizeHttpRequests` could be tested with following configuration.
+Once `WebSecurityConfig` is loaded, the `HttpSecurity.authorizeHttpRequests` could be tested with `WithMockUser`.  
 ```java
+// HttpSecurity.authorizeHttpRequests
 ...
 http.authorizeHttpRequests(requests -> requests
     ...

@@ -160,7 +160,9 @@ public class WebSecurityIntegrationTests {
     }
 
     // /user/info
-    @WithMockUser(value = "user1", authorities = {"USER_01"})
+    @WithMockUser(value = "user1", authorities = {"USER_01"}
+//            , roles = {"USER_02"}
+    )
     @Test
     public void test_postUserInfo_user1_USER_01() throws Exception {
         // given

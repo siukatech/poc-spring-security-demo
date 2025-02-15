@@ -55,7 +55,8 @@ Detail explanation can be found on baeldung.com.
 https://baeldung.com/spring-security-granted-authority-vs-role  
 
 They are the `GrantedAuthority` class in `Spring Security`, technically they are same.  
-From my view, the main difference between `Role` and `Authority` is role having the prefix `ROLE_`.  
+The main difference between `Role` and `Authority` is role having the prefix `ROLE_`.  
+Either using role or authority, they cannot be defined at the same time.  
 
 In configuration `HttpSecurity` and unit-test `WithMockUser`, we need to align them.  
 If `hasRole` or `hasAnyRole` are configured, then `WithMockUser.roles` will be used.  
